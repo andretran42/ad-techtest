@@ -1,0 +1,41 @@
+<form (ngSubmit)="submitForm()">
+    <h2 class="heading">User Form</h2>
+    
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="userDetails.name" required maxlength="100">
+    </div>
+  
+    <div>
+      <label for="age">
+        Age:
+        <span *ngIf="!userDetails.age || (userDetails.yearsOrMonths === 'months' && userDetails.age > 12)">
+          (Please enter a valid age)
+        </span>
+      </label>
+      <div>
+        <input type="number" id="age" name="age" [(ngModel)]="userDetails.age" [max]="getMaxAge()" min="1" required>
+        <select name="yearsOrMonths" [(ngModel)]="userDetails.yearsOrMonths" required>
+          <option value="years">Years</option>
+          <option value="months">Months</option>
+        </select>
+      </div>
+    </div>
+  
+    <div>
+      <p>Are you a student?</p>
+      <div class="student-option">
+        <input type="radio" id="student-yes" name="student" [(ngModel)]="userDetails.student" [value]="true" required>
+        <label for="student-yes">Yes</label>
+        <input type="radio" id="student-no" name="student" [(ngModel)]="userDetails.student" [value]="false" required>
+        <label for="student-no">No</label>
+      </div>
+    </div>
+  
+    <div>
+      <label for="school">School:</label>
+      <input type="text" id="school" name="school" [(ngModel)]="userDetails.school" maxlength="200" [attr.readonly]="!userDetails.student ? true : null">
+    </div>
+  
+    <button type="submit">Add</button>
+  </form>

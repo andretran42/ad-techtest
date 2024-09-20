@@ -1,0 +1,21 @@
+.app-container {
+    display: flex;
+    align-items: start;
+  }
+  
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+  }
+  
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    padding: 8px;
+  }
+  
+
+  
